@@ -1,0 +1,40 @@
+
+from pathlib import Path
+import pandas as pd
+import hashlib
+
+PROJECT_DIR = Path(__file__).resolve().parent
+DATASET_DIR = PROJECT_DIR / "dataset"
+
+files = [
+    DATASET_DIR / "sentiment_dataset.csv",
+    DATASET_DIR / "Tweets.csv",
+]
+
+for file_path in files:
+    print("\n" + "=" * 60)
+    print("File:", file_path.name)
+
+    if not file_path.exists():
+        print("File not found:", file_path)
+        continue
+
+    # Check file size and content hash
+    file_hash = hashlib.sha256(file_path.read_bytes()).hexdigest()
+
+    print("Size:", file_path.stat().st_size, "bytes")
+    print("SHA-256:", file_hash)
+
+    try:
+        df = pd.read_csv(file_path)
+
+        print("Rows:", len(df))
+        print("Columns:", df.columns.tolist())
+        print("\nFirst 3 rows:")
+        print(df.head(3).to_string(index=False))
+
+        print("\nMissing values:")
+        print(df.isnull().sum().to_string())
+
+    except Exception as error:
+        print("Error:", error)

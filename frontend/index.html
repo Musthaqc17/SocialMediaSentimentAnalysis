@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Sentiment Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1>SocialPulse AI</h1>
+        <p>AI-Based Social Media Behavior and Sentiment Analysis</p>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Analyze Your Text</h2>
+
+            <p class="description">
+                Enter a social media post, tweet, or comment to analyze
+                its sentiment using machine learning.
+            </p>
+
+            <form id="sentimentForm">
+                <label for="postText">Social Media Text</label>
+
+                <textarea
+                    id="postText"
+                    placeholder="Example: I love this product!"
+                    required
+                ></textarea>
+
+                <label for="modelSelect">Select Machine Learning Model</label>
+
+                <select id="modelSelect">
+                    <option value="SVM">Support Vector Machine (SVM)</option>
+                    <option value="Logistic Regression">Logistic Regression</option>
+                    <option value="Random Forest">Random Forest</option>
+                </select>
+
+                <button type="submit" id="analyzeButton">
+                    Analyze Sentiment
+                </button>
+            </form>
+
+            <hr>
+
+            <h2>Analyze an Image</h2>
+
+            <p class="description">
+                Upload an image containing a social media post, tweet,
+                or comment. OCR will extract its text for sentiment analysis.
+            </p>
+
+            <form id="imageForm">
+                <label for="imageFile">Choose an Image</label>
+
+                <input
+                    type="file"
+                    id="imageFile"
+                    accept=".png,.jpg,.jpeg,image/png,image/jpeg"
+                    required
+                >
+
+                <label for="imageModelSelect">Select Machine Learning Model</label>
+
+                <select id="imageModelSelect">
+                    <option value="SVM">Support Vector Machine (SVM)</option>
+                    <option value="Logistic Regression">Logistic Regression</option>
+                    <option value="Random Forest">Random Forest</option>
+                </select>
+
+                <button type="submit" id="imageAnalyzeButton">
+                    Analyze Image Sentiment
+                </button>
+            </form>
+
+            <p id="statusMessage" role="status"></p>
+
+            <div id="result" class="result hidden" aria-live="polite">
+                <h3>Analysis Result</h3>
+
+                <p><strong>Sentiment:</strong> <span id="sentimentValue"></span></p>
+                <p><strong>Selected Model:</strong> <span id="modelValue"></span></p>
+                <p><strong>Analyzed Text:</strong> <span id="textValue"></span></p>
+            </div>
+
+            <div id="imageResult" class="result hidden" aria-live="polite">
+                <h3>Image Analysis Result</h3>
+
+                <p>
+                    <strong>Extracted Text:</strong>
+                    <span id="extractedTextValue"></span>
+                </p>
+
+                <p>
+                    <strong>Sentiment:</strong>
+                    <span id="imageSentimentValue"></span>
+                </p>
+
+                <p>
+                    <strong>Selected Model:</strong>
+                    <span id="imageModelValue"></span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>SocialPulse AI | Machine Learning Project</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
